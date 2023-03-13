@@ -1,0 +1,20 @@
+pais = American
+Comida = Breakfast
+tipo Comida = Pancake
+health = normal
+LINK=https://api.edamam.com/api/recipes/v2?type=public&app_id=9e4c1756&app_key=b7160e542d15bf0f3fecd2623912cd8b&cuisineType=American&mealType=Breakfast&dishType=Pancake
+
+pais = Asian
+Comida = Breakfast
+tipo Comida = Pancake
+health = normal
+LINK=https://api.edamam.com/api/recipes/v2?type=public&app_id=9e4c1756&app_key=b7160e542d15bf0f3fecd2623912cd8b&cuisineType=Asian&mealType=Breakfast&dishType=Pancake
+
+pais = Asian
+Comida = Breakfast
+tipo Comida = Pancake
+health = normal
+LINK=https://api.edamam.com/api/recipes/v2?type=public&app_id=9e4c1756&app_key=b7160e542d15bf0f3fecd2623912cd8b&cuisineType=Asian&mealType=Breakfast&dishType=Pancake
+
+
+link completo = https://api.edamam.com/api/recipes/v2?type=public&app_id=9e4c1756&app_key=b7160e542d15bf0f3fecd2623912cd8b&health=vegan&cuisineType=Asian&mealType=Dinner&dishType=Main%20course
