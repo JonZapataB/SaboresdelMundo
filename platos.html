@@ -9,27 +9,60 @@
 </head>
 <body>
     <section id="inicio">
-        <h1  href="index.html">Sabores del Mundo</h1>
-        <ul id="barraInicio"></ul>
-        <li id="platos"><a href="#platos" onclick="seleccionar()">Platos</a></li>
-        <li id="postres"><a href="#postres" onclick="seleccionar()">Postres</a></li>
-        <li id="bebidas"><a href="#bebidas" onclick="seleccionar()">Bebidas</a></li>
+        <h1 id="tituloclick"><a href="index.html" onclick="seleccionar()">Sabores del Mundo</a></h1>
+        <ul id="barraInicio">
+            <li id="platos"><a href="platos.html" onclick="seleccionar()">Platos</a></li>
+            <li id="postres"><a href="postres.html" onclick="seleccionar()">Postres</a></li>
+            <li id="bebidas"><a href="bebidas.html" onclick="seleccionar()">Bebidas</a></li>
+        </ul>
     <h2>Platos</h2>
     <div class="menuplatos">
-            <button>PLatos</button>
-            <div class="contenidoplatos">
-                <a id="America">Americana</a>
-                <a id="France">Francesa</a>
-                <a id="Italiana">Italiana</a>
-                <a id="Japonesa">japonesa</a>
-                <a id="Asia">Asiatica</a>
-                <a id="Mediterranea">Mediterranea</a>
-                <a id="China">China</a>
-                <a id="Mexicana">mexicana</a>
-                <a id="India">India</a>
-                <a id="Inglesa">Inglesa</a>
-            </div>
+            <h4>Pais</h4>
+            <select class="paisplatos" id="paisplatos">
+                <option value="America">Americana</option>
+                <option value="Francesa">Francesa</option>
+                <option value="Italiana">Italiana</option>
+                <option value="Japonesa" >Japonesa</option>
+                <option value="Asia">Asiatica</option>
+                <option value="Mediterranea">Mediterranea</option>
+                <option value="China">China</option>
+                <option value="Mexicana">mexicana</option>
+                <option value="India">India</option>
+                <option value="Inglesa">Inglesa</option>
+            </select>
+    </div>  
+    <div class="menuplatos">
+        <h4>Comida</h4>
+        <select class="comidaplatos" id="comidaplatos">
+            <option value="desayuno">Desayuno</option>
+            <option value="cena">Cena</option>
+            <option value="comida">Comida</option>
+            <option value="snack" >Snack</option>
+            <option value="horaTe">Té</option>
+        </select>
     </div>
+    <div class="tipoplatos">
+        <h4>Comida</h4>
+        <select class="tipocomidaplatos" id="tipocomidaplatos">
+            <option value="PlatoPrincipal">Plato principal</option>
+            <option value="Salad">Ensalada</option>
+            <option value="Sandwiches">Sandwiches</option>
+            <option value="Soup" >Sopa</option>
+            <option value="SideDish">Guarnicion</option>
+            <option value="Started">Entrantes</option>
+            <option value="Cereals">Cereales</option>
+        </select>
+    </div>
+    <div class="healthplatos">
+        <h4>Healthy</h4>
+        <select class="healthplatos" id="healthplatos">
+            <option value="Normal">No</option>
+            <option value="vegetariana">Vegetariana</option>
+            <option value="vegana">Vegana</option>
+        </select>
+    </div>
+    <button id="botonFiltrarPlatos">Filtrar</button>
+
     <section id="platosRicos"></section>
     <script src="js/index.js"></script>
     

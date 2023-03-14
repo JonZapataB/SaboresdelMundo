@@ -12,7 +12,7 @@ const paises={
 }
 
 const healthy ={
-    "Normal":"a",
+    "Normal":"",
     "vegetariana":"vegetarian",
     "vegana":"vegan"
 }
@@ -34,8 +34,9 @@ const tipoComida = {
     "Sandwiches":"Sandwiches",
     "Soup":"Soup",
     "SideDish":"Side dish",
-    "Started":"Started",
-    "Sweets":"Sweets"
+    "Started":"Starter",
+    "Sweets":"Sweets",
+    "Cereals":"Cereals"
 }
 
 
@@ -58,7 +59,8 @@ async function obtenerResultados(url){
     return  data.hits.map(food =>{
       return{
         name: food.recipe.label,
-        imagen: food.recipe.image
+        imagen: food.recipe.image,
+        ingredients: food.recipe.ingredients.map(ingredient =>ingredient.text)
       }
     })
     })
@@ -71,39 +73,100 @@ async function obtenerResultados(url){
 async function mostrarComida(url){
 
   let recipes = await obtenerResultados(url);
-  let article = document.createElement("article");
+  document.getElementById("platosRicos").innerHTML ="";
   recipes.forEach(recipe =>{
+    let article = document.createElement("article");
     let label = recipe.name;
     let formateLabel = `${label}`;
+    let label2 = recipe.ingredients.join(", ");
+    let formateingredients = `${label2}`;
+    let ingredientes = document.createElement("p");
     let titulo = document.createElement("h3");
     let imagenComida= document.createElement("img");
     imagenComida.src = recipe.imagen
     titulo.innerText = formateLabel;
+    ingredientes.innerText = formateingredients
     article.appendChild(titulo)
     article.appendChild(imagenComida);
+    article.appendChild(ingredientes);
+    document.getElementById("platosRicos").appendChild(article);
   });
-  document.getElementById("platosRicos").appendChild(article);
-  return article;
  }
 
- /* let pais = document.getElementById("botonpais").value;
-let health = document.getElementById("health").value;
-let comidas = document.getElementById("comidas").value;
-let tipoComidas = document.getElementById("tipoComidas").value; */
-let url = createBaseUrl()
-url.searchParams.set("type","public")
-url.searchParams.append("health","vegan"/* healthy[health] */)
-url.searchParams.append("cuisineType","American"/* paises[pais] */)
-url.searchParams.append("mealType","Dinner"/* comida[comidas] */)
-url.searchParams.append("dishType","Main course"/* tipoComida[tipoComidas] */)
-mostrarComida(url);
-/*   function crearFood(food){
-        let nombre = food.label
-        let ul = document.createElement("ul");
-        let li = document.createElement("li");
-        ul.appendChild(li);
-        document.getElementById("body").appendChild(ul);
-        let ul2=mostrarComida(food.recipes);
-        document.getElementById("body").appendChild(ul2);
-   
-     }     */
+
+/*  */
+
+document.getElementById("botonFiltrarPlatos").addEventListener("click", filtrar) 
+
+function filtrar(){
+  let url = createBaseUrl()
+  url.searchParams.set("type","public")
+  let pais = document.getElementById("paisplatos").value;
+  url.searchParams.set("cuisineType",paises[pais] )
+  let comidas = document.getElementById("comidaplatos").value;
+  url.searchParams.set("mealType", comida[comidas] )
+  let tipoComidas = document.getElementById("tipocomidaplatos").value;
+  url.searchParams.append("dishType", tipoComida[tipoComidas] )
+  let health = document.getElementById("healthplatos").value;
+  if(healthy[health]!=""){
+    url.searchParams.append("health", healthy[health] )
+  }
+  mostrarComida(url)
+  console.log(url.href);
+}
+
+/* document.getElementById("paisplatos").addEventListener("change", filtrarPaises)
+
+function filtrarPaises(){
+  let pais = document.getElementById("paisplatos").value;
+  url.searchParams.set("cuisineType",paises[pais] )
+  if(url.searchParams.get("mealType")=== null)return
+  if(url.searchParams.get("dishType")=== null)return
+  if(url.searchParams.get("health")=== null)return
+  
+  mostrarComida(url);
+  console.log(url.href);
+
+}
+
+*/
+/* document.getElementById("comidaplatos").addEventListener("change", filtrar)
+
+function filtrarComida(){
+  let comidas = document.getElementById("comidaplatos").value;
+  url.searchParams.set("mealType", comida[comidas] )
+  if(url.searchParams.get("cuisineType")=== null)return
+  if(url.searchParams.get("dishType")=== null)return
+  if(url.searchParams.get("health")=== null)return
+
+  mostrarComida(url);
+  console.log(url.href);
+}
+
+document.getElementById("tipocomidaplatos").addEventListener("change", filtrarTipoComida)
+
+function filtrarTipoComida(){
+  let tipoComidas = document.getElementById("tipocomidaplatos").value;
+  url.searchParams.append("dishType", tipoComida[tipoComidas] )
+  if(url.searchParams.get("cuisineType")=== null)return
+  if(url.searchParams.get("mealType")=== null)return
+  if(url.searchParams.get("health")=== null)return
+
+  mostrarComida(url);
+  console.log(url.href);
+}
+
+document.getElementById("healthplatos").addEventListener("change", filtrarhealthComida)
+
+function filtrarhealthComida(){
+  let health = document.getElementById("healthplatos").value;
+  if(healthy[health]!=""){
+    url.searchParams.append("health", healthy[health] )
+  }
+  if(url.searchParams.get("cuisineType")=== null)return
+  if(url.searchParams.get("mealType")=== null)return
+  if(url.searchParams.get("dishType")=== null)return
+
+  mostrarComida(url);
+  console.log(url.href);
+} */
