@@ -1,0 +1,31 @@
+ .menuplatos{
+    display:inline-block;
+    position: relative;
+}
+
+.contenidoplatos{
+    display:none;
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+}
+
+.menuplatos:hover .contenidoplatos{  
+    display: block;
+}
+
+
+.botonpaises:hover .contenidoplatos{
+    display: block;
+}
+.contenidoplatos a {
+  display: block;
+  color: #000000;
+  padding: 5px;
+  text-decoration: none;
+}
+.contenidoplatos a:hover {
+  color: #FFFFFF;
+  background-color: #00A4BD;
+}

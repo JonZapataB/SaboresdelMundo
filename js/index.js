@@ -39,16 +39,7 @@ const tipoComida = {
 }
 
 
-let pais = document.getElementById("pais").value;
-let health = document.getElementById("health").value;
-let comidas = document.getElementById("comidas").value;
-let tipoComidas = document.getElementById("tipoComidas").value;
-let url = createBaseUrl()
-url.searchParams.set("type","public")
-url.searchParams.append("health",healthy[health])
-url.searchParams.append("cuisineType",paises[pais])
-url.searchParams.append("mealType",comida[comidas])
-url.searchParams.append("dishType",tipoComida[tipoComidas])
+
 
 
 
@@ -60,24 +51,59 @@ return url
 }
 
 
-fetch(createBaseUrl + url)
+async function obtenerResultados(url){
+  let recipes = await fetch(url.href)
   .then(response => response.json())
   .then(data => {
-    const foods = data.MRData.hits;
-    foods.forEach(food => {
-      crearFood(food);
-    });
-    crearCarousel();
+    return  data.hits.map(food =>{
+      return{
+        name: food.recipe.label,
+        imagen: food.recipe.image
+      }
+    })
+    })
+  console.log(recipes);
+  return recipes;
+}
 
-  })
-  .catch(error => {
-    console.log(error);
+
+  
+async function mostrarComida(url){
+
+  let recipes = await obtenerResultados(url);
+  let article = document.createElement("article");
+  recipes.forEach(recipe =>{
+    let label = recipe.name;
+    let formateLabel = `${label}`;
+    let titulo = document.createElement("h3");
+    let imagenComida= document.createElement("img");
+    imagenComida.src = recipe.imagen
+    titulo.innerText = formateLabel;
+    article.appendChild(titulo)
+    article.appendChild(imagenComida);
   });
+  document.getElementById("platosRicos").appendChild(article);
+  return article;
+ }
 
-  function crearFood(food){
+ /* let pais = document.getElementById("botonpais").value;
+let health = document.getElementById("health").value;
+let comidas = document.getElementById("comidas").value;
+let tipoComidas = document.getElementById("tipoComidas").value; */
+let url = createBaseUrl()
+url.searchParams.set("type","public")
+url.searchParams.append("health","vegan"/* healthy[health] */)
+url.searchParams.append("cuisineType","American"/* paises[pais] */)
+url.searchParams.append("mealType","Dinner"/* comida[comidas] */)
+url.searchParams.append("dishType","Main course"/* tipoComida[tipoComidas] */)
+mostrarComida(url);
+/*   function crearFood(food){
         let nombre = food.label
         let ul = document.createElement("ul");
         let li = document.createElement("li");
         ul.appendChild(li);
         document.getElementById("body").appendChild(ul);
-  }
+        let ul2=mostrarComida(food.recipes);
+        document.getElementById("body").appendChild(ul2);
+   
+     }     */
