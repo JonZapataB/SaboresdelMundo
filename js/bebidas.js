@@ -43,7 +43,7 @@ async function obtenerPostre(url2){
 
 async function mostrarBebida(url2){
 
-  let recipes = await mostrarBebida(url2);
+  let recipes = await obtenerPostre(url2);
   document.getElementById("bebidasRicas").innerHTML ="";
   recipes.forEach(recipe =>{
     let article = document.createElement("article");
@@ -64,18 +64,19 @@ async function mostrarBebida(url2){
   });
 }
 
+
 document.getElementById("botonFiltrarBebidas").addEventListener("click", filtrarBebidas) 
 
 function filtrarBebidas(){
   let url2 = createBaseUrl()
   url2.searchParams.set("type","public")
-    url2.searchParams.set("dishType","Drinks")
-    let paisbebida = document.getElementById("paisbebidas").value;
-    url2.searchParams.set("cuisineType",paises[paisbebida] )
-    let healthbebida = document.getElementById("healthbebidas").value;
-    if(healthy[healthbebida]!=""){
-      url2.searchParams.append("health", healthy[healthbebida] )
-    }
+  url2.searchParams.set("dishType","Drinks")
+  let paisbebida = document.getElementById("paisbebidas").value;
+  url2.searchParams.set("cuisineType",paises[paisbebida] )
+  let healthbebida = document.getElementById("healthbebidas").value;
+  if(healthy[healthbebida]!=""){
+    url2.searchParams.append("health", healthy[healthbebida] )
+  }
   mostrarBebida(url2)
   console.log(url2.href);
 }

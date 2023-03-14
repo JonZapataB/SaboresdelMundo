@@ -1,0 +1,12 @@
+
+body{
+    
+     background:  linear-gradient(to right,rgba(94, 94, 94, 0.5),rgba(94,94,94,0.5)), url("/image/fondo.png"); 
+}
+#barraInicio{
+    list-style: none;
+    display: flex;
+}
+#barraInicio li a{
+    text-decoration: none;
+}

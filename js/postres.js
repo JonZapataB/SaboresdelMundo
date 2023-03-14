@@ -64,9 +64,28 @@ async function mostrarPostre(url1){
   });
 }
 
+document.getElementById("botonFiltrarPostres").addEventListener("click", filtrarPostre) 
+
+function filtrarPostre(){
+  let url1 = createBaseUrl()
+  url1.searchParams.set("type","public")
+  url1.searchParams.set("dishType","Desserts")
+  url1.searchParams.set("dishType","Sweets")
+  url1.searchParams.set("dishType","pancake")
+  let paisPostres = document.getElementById("paispostres").value;
+  url1.searchParams.set("cuisineType",paises[paisPostres] )
+  let healthPostre = document.getElementById("healthpostres").value;
+  if(healthy[healthPostre]!=""){
+    url1.searchParams.append("health", healthy[healthPostre] )
+  }
+  mostrarPostre(url1)
+  console.log(url1.href);
+}
+
+
 /* let paispostre = document.getElementById("paispostres").value;
 let healthpostre = document.getElementById("healthpostre").value; */
-let url1 = createBaseUrl()
+/* let url1 = createBaseUrl()
 url1.searchParams.set("type","public")
 url1.searchParams.set("dishType","Desserts")
 url1.searchParams.set("dishType","Sweets")
@@ -96,4 +115,4 @@ function filtrarhealthPostre(){
 
   mostrarPostre(url1);
   console.log(url1.href);
-}
+} */
