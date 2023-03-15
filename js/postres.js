@@ -33,6 +33,7 @@ async function obtenerPostre(url1){
       return{
         name: food.recipe.label,
         imagen: food.recipe.image,
+        linkReceta: food.recipe.url,
         ingredients: food.recipe.ingredients.map(ingredient =>ingredient.text)
       }
     })
@@ -51,15 +52,21 @@ async function mostrarPostre(url1){
     let formateLabel = `${label}`;
     let label2 = recipe.ingredients.join(", ");
     let formateingredients = `${label2}`;
+    let linkReceta = recipe.linkReceta;
     let ingredientes = document.createElement("p");
     let titulo = document.createElement("h3");
     let imagenComida= document.createElement("img");
+    let link = document.createElement("a");
     imagenComida.src = recipe.imagen
     titulo.innerText = formateLabel;
-    ingredientes.innerText = formateingredients
-    article.appendChild(titulo)
-    article.appendChild(imagenComida);
-    article.appendChild(ingredientes);
+    ingredientes.innerText = formateingredients;
+    article.appendChild(link);
+    link.appendChild(titulo);
+    link.appendChild(imagenComida);
+    link.appendChild(ingredientes);
+    link.href = linkReceta;
+    link.setAttribute("target","_blank");
+    
     document.getElementById("postresRicos").appendChild(article);
   });
 }
@@ -69,6 +76,7 @@ document.getElementById("botonFiltrarPostres").addEventListener("click", filtrar
 function filtrarPostre(){
   let url1 = createBaseUrl()
   url1.searchParams.set("type","public")
+  url1.searchParams.set("random","true")
   url1.searchParams.set("dishType","Desserts")
   url1.searchParams.set("dishType","Sweets")
   url1.searchParams.set("dishType","pancake")
@@ -81,38 +89,3 @@ function filtrarPostre(){
   mostrarPostre(url1)
   console.log(url1.href);
 }
-
-
-/* let paispostre = document.getElementById("paispostres").value;
-let healthpostre = document.getElementById("healthpostre").value; */
-/* let url1 = createBaseUrl()
-url1.searchParams.set("type","public")
-url1.searchParams.set("dishType","Desserts")
-url1.searchParams.set("dishType","Sweets")
-url1.searchParams.set("dishType","pancake")
-
-document.getElementById("paispostres").addEventListener("change", filtrarPaisesPostre)
-
-function filtrarPaisesPostre(){
-  let paispostre = document.getElementById("paispostres").value;
-  url1.searchParams.set("cuisineType",paises[paispostre] )
-  if(url1.searchParams.get("health")=== null)return
-  
-  mostrarPostre(url1);
-  console.log(url1.href);
-
-}
-
-document.getElementById("healthpostres").addEventListener("change", filtrarhealthPostre)
-
-function filtrarhealthPostre(){
-  let healthpostre = document.getElementById("healthpostres").value;
-  if(healthy[healthpostre]!=""){
-    url1.searchParams.append("health", healthy[healthpostre] )
-  }
-  if(url1.searchParams.get("cuisineType")=== null)return
-
-
-  mostrarPostre(url1);
-  console.log(url1.href);
-} */

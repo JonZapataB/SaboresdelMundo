@@ -33,6 +33,7 @@ async function obtenerPostre(url2){
       return{
         name: food.recipe.label,
         imagen: food.recipe.image,
+        linkReceta: food.recipe.url,
         ingredients: food.recipe.ingredients.map(ingredient =>ingredient.text)
       }
     })
@@ -51,15 +52,21 @@ async function mostrarBebida(url2){
     let formateLabel = `${label}`;
     let label2 = recipe.ingredients.join(", ");
     let formateingredients = `${label2}`;
+    let linkReceta = recipe.linkReceta;
     let ingredientes = document.createElement("p");
     let titulo = document.createElement("h3");
     let imagenComida= document.createElement("img");
-    imagenComida.src = recipe.imagen
+    let link = document.createElement("a");
+    imagenComida.src = recipe.imagen;
     titulo.innerText = formateLabel;
-    ingredientes.innerText = formateingredients
-    article.appendChild(titulo)
-    article.appendChild(imagenComida);
-    article.appendChild(ingredientes);
+    ingredientes.innerText = formateingredients;
+    article.appendChild(link);
+    link.appendChild(titulo);
+    link.appendChild(imagenComida);
+    link.appendChild(ingredientes);
+    link.href = linkReceta;
+    link.setAttribute("target","_blank");
+    
     document.getElementById("bebidasRicas").appendChild(article);
   });
 }
@@ -70,6 +77,7 @@ document.getElementById("botonFiltrarBebidas").addEventListener("click", filtrar
 function filtrarBebidas(){
   let url2 = createBaseUrl()
   url2.searchParams.set("type","public")
+  url2.searchParams.set("random","true")
   url2.searchParams.set("dishType","Drinks")
   let paisbebida = document.getElementById("paisbebidas").value;
   url2.searchParams.set("cuisineType",paises[paisbebida] )
@@ -80,33 +88,3 @@ function filtrarBebidas(){
   mostrarBebida(url2)
   console.log(url2.href);
 }
-/* let paisbebida = document.getElementById("paisbebidas").value;
-let healthbebida = document.getElementById("healthbebida").value; */
-/* let url2 = createBaseUrl()
-
-
-document.getElementById("paisbebidas").addEventListener("change", filtrarPaisesPostre)
-
-function filtrarPaisesPostre(){
-  let paisbebida = document.getElementById("paisbebidas").value;
-  url2.searchParams.set("cuisineType",paises[paisbebida] )
-  if(url2.searchParams.get("health")=== null)return
-  
-  mostrarPostre(url2);
-  console.log(url2.href);
-
-}
-
-document.getElementById("healthbebidas").addEventListener("change", filtrarhealthbebida)
-
-function filtrarhealthbebida(){
-  let healthbebida = document.getElementById("healthbebidas").value;
-  if(healthy[healthbebida]!=""){
-    url2.searchParams.append("health", healthy[healthbebida] )
-  }
-  if(url2.searchParams.get("cuisineType")=== null)return
-
-
-  mostrarPostre(url2);
-  console.log(url2.href);
-} */
