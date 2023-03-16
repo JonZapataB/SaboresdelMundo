@@ -1,0 +1,14 @@
+
+.hidden{
+    display:none;
+}
+body{
+    background:  linear-gradient(to right,rgba(94, 94, 94, 0.5),rgba(94,94,94,0.5)), url("https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2020/10/comida-platos-mesa-comida-2115297.jpg?tf=1080x");
+    margin:15px;
+}
+h1 a{
+    color:#d0ff95;
+    font-size: 130px;
+    text-decoration: none;
+}
+

@@ -1,29 +1,12 @@
 
 body{
     
-     background:  linear-gradient(to right,rgba(94, 94, 94, 0.5),rgba(94,94,94,0.5)), url("https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2020/10/comida-platos-mesa-comida-2115297.jpg?tf=1080x");
+     background:  linear-gradient(to right,rgba(94, 94, 94, 0.7),rgba(94,94,94,0.7)), url("https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2020/10/comida-platos-mesa-comida-2115297.jpg?tf=1080x");
      margin:15px;
-     
+     background-size: 100%;
 
 }
-#barraInicio{
-    list-style: none;
-    padding-top: 10px;
-    margin-right: 150px;
-    text-align: right;
-    
-    
-}
-#barraInicio li a{
-    text-decoration: none;
-    color: #4a3425;
-    background-color: #d0ff95;
-    padding: 10px;
-    text-align: right;
-    margin-left: 150px;
-    border-radius: 10px;
-    
-}
+
 
 #barraInicio li{
     margin: 30px;
@@ -56,4 +39,12 @@ h3{
     text-align: center;
     padding: 20px;
     border-radius: 20px;
+}
+
+p{
+    text-align: right;
+    font-size: 20px;
+    margin-right: 200px;
+    color:#fff;
+    margin-top: 30px;
 }

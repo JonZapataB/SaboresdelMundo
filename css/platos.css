@@ -1,31 +1,137 @@
-/*  .menuplatos{
-    display:inline-block;
-    position: relative;
+
+.hidden{
+  display:none;
+}
+body{
+  background:  linear-gradient(to right,rgba(94, 94, 94, 0.7),rgba(94,94,94,0.7)), url("https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2020/10/comida-platos-mesa-comida-2115297.jpg?tf=1080x");
+  background-size: 100%;
 }
 
-.contenidoplatos{
-    display:none;
-    position: absolute;
-    width: 100%;
-    overflow: auto;
-    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+#platosRicos{
+  background-color:rgba(94, 94, 94, 0.9);
+  margin-top: 150px;
 }
-
-.menuplatos:hover .contenidoplatos{  
-    display: block;
-}
-
-
-.botonpaises:hover .contenidoplatos{
-    display: block;
-}
-.contenidoplatos a {
-  display: block;
-  color: #000000;
-  padding: 5px;
+h1 a{
+  color:#d0ff95;
+  font-size: 130px;
   text-decoration: none;
 }
-.contenidoplatos a:hover {
-  color: #FFFFFF;
-  background-color: #00A4BD;
-} */
+
+h2{
+  color:#4a3425;
+  font-size: 80px;
+  margin-left: 40px;
+}
+
+#nombrefiltros{
+  color:#fff;
+  font-size: 50px;
+  margin-bottom:0px
+}
+
+#barraInicio{
+  list-style: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #4a3425;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding-left: 0px;
+  
+  
+}
+
+#barraInicio li a{
+  text-decoration: none;
+  color: #d0ff95;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 30px;
+  padding-left: 50px;
+  
+}
+
+#corazon{
+  color:red;
+
+}
+
+#filtros{
+  
+  display:-webkit-flex;
+  justify-content: center;
+}
+
+.paisplatos, .menuplatos, .tipoplatos, .healthplatos{
+  padding-right: 50px;
+  text-align: center;
+  
+}
+
+#paisplatos, #comidaplatos, #tipocomidaplatos, #healthplatos{
+  color:#fff;
+  background: none;
+  border:none;
+  font-size: 30px;
+}
+
+#seccionBoton{
+  text-align: center;
+  margin-top: 70px;
+}
+
+#botonFiltrarPlatos{
+  background: none;
+  border: 5px solid#4a3425;
+  border-radius: 20px;
+  color:#d0ff95;
+  font-size: 50px;
+  margin-top: 30px;
+  text-align: right;
+}
+
+h3{
+  color:#fff;
+  font-size: 30px;
+}
+
+article{
+  margin-left: 10px;
+}
+
+article a{
+  text-decoration: none;
+}
+
+.fa-angle-down{
+  text-decoration: none;
+  background: none;
+  border:none;
+  color:#fff;
+  display:block;
+  padding-top:5px;
+  padding-bottom: 5px;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.fa-regular{
+  text-decoration: none;
+  background: none;
+  border:none;
+  color:#fff;
+  display:block;
+  padding-top:5px;
+  padding-bottom: 5px;
+  font-size: 20px;
+  margin-left: 10px;
+}
+#cargarImagen{
+  text-align: center;
+}
+#cargarImagen img{
+  width: 500px;
+  height: 500px;
+}

@@ -34,7 +34,8 @@ async function obtenerPostre(url1){
         name: food.recipe.label,
         imagen: food.recipe.image,
         linkReceta: food.recipe.url,
-        ingredients: food.recipe.ingredients.map(ingredient =>ingredient.text)
+        ingredients: food.recipe.ingredientLines,
+        allergies: food.recipe.cautions
       }
     })
     })
@@ -50,20 +51,50 @@ async function mostrarPostre(url1){
     let article = document.createElement("article");
     let label = recipe.name;
     let formateLabel = `${label}`;
-    let label2 = recipe.ingredients.join(", ");
-    let formateingredients = `${label2}`;
     let linkReceta = recipe.linkReceta;
-    let ingredientes = document.createElement("p");
+    let ul = document.createElement("ul");
+    ul.setAttribute("id","ingredientesLista");
+    ul.classList.add("hidden");
+    recipe.ingredients.forEach(ingredient=>{
+      let ingredientes = document.createElement("li");
+      ingredientes.innerText = ingredient;
+      ul.appendChild(ingredientes);
+    })
+    let ul2 = document.createElement("ul");
+    ul2.setAttribute("id","AlergiasLista");
+    ul2.classList.add("hidden");
+    recipe.allergies.forEach(allergy=>{
+      let alergias = document.createElement("li");
+      alergias.innerText = allergy;
+      ul2.appendChild(alergias);
+    })
     let titulo = document.createElement("h3");
     let imagenComida= document.createElement("img");
     let link = document.createElement("a");
+    let botonIngredientes = document.createElement("button");
+    botonIngredientes.addEventListener("click", () => {
+      ul.classList.toggle("hidden");
+    });
+    let botonAlergias = document.createElement("button");
+    botonAlergias.addEventListener("click", () => {
+        ul2.classList.toggle("hidden");
+    });
+    let guardar = document.createElement("p");
     imagenComida.src = recipe.imagen
+    guardar.addEventListener("click",()=> addRecipe(recipe));
     titulo.innerText = formateLabel;
-    ingredientes.innerText = formateingredients;
+    guardar.setAttribute("class", "fa-regular fa-heart");
+    guardar.innerText = " Guardar";
+    botonIngredientes.innerText = "Ingredientes";
+    botonAlergias.innerText = "Alergias";
     article.appendChild(link);
+    article.appendChild(botonIngredientes);
+    article.appendChild(ul);
+    article.appendChild(botonAlergias);
+    article.appendChild(ul2);
     link.appendChild(titulo);
+    article.appendChild(guardar);
     link.appendChild(imagenComida);
-    link.appendChild(ingredientes);
     link.href = linkReceta;
     link.setAttribute("target","_blank");
     
@@ -89,3 +120,5 @@ function filtrarPostre(){
   mostrarPostre(url1)
   console.log(url1.href);
 }
+
+import { getRecipes,addRecipe,deleteRecipe } from "./menu.js"

@@ -61,11 +61,12 @@ async function obtenerResultados(url){
         name: food.recipe.label,
         imagen: food.recipe.image,
         linkReceta: food.recipe.url,
-        ingredients: food.recipe.ingredientLines
+        ingredients: food.recipe.ingredientLines,
+        allergies: food.recipe.cautions
       }
     })
   })
-  /* console.log(recipes); */
+   console.log(recipes); 
   return recipes;
 }
 
@@ -73,6 +74,7 @@ async function obtenerResultados(url){
   
 async function mostrarComida(url){
 
+  mostrarLoading();
   let recipes = await obtenerResultados(url);
   document.getElementById("platosRicos").innerHTML ="";
   recipes.forEach(recipe =>{
@@ -81,18 +83,48 @@ async function mostrarComida(url){
     let formateLabel = `${label}`;
     let linkReceta = recipe.linkReceta; 
     let ul = document.createElement("ul");
+    ul.setAttribute("id","ingredientesLista");
+    ul.classList.add("hidden");
     recipe.ingredients.forEach(ingredient=>{
       let ingredientes = document.createElement("li");
       ingredientes.innerText = ingredient;
       ul.appendChild(ingredientes);
     })
+    let ul2 = document.createElement("ul");
+    ul2.setAttribute("id","AlergiasLista");
+    ul2.classList.add("hidden");
+    recipe.allergies.forEach(allergy=>{
+      let alergias = document.createElement("li");
+      alergias.innerText = allergy;
+      ul2.appendChild(alergias);
+    })
     let titulo = document.createElement("h3");
     let imagenComida= document.createElement("img");
     let link = document.createElement("a");
+    let botonIngredientes = document.createElement("button");
+    botonIngredientes.setAttribute("class","fa-solid fa-angle-down");
+    botonIngredientes.addEventListener("click", () => {
+      ul.classList.toggle("hidden");
+    });
+    let botonAlergias = document.createElement("button");
+    botonAlergias.setAttribute("class","fa-solid fa-angle-down");
+    botonAlergias.addEventListener("click", () => {
+        ul2.classList.toggle("hidden");
+    });
+    let guardar = document.createElement("p");
     imagenComida.src = recipe.imagen
+    guardar.addEventListener("click",()=> addRecipe(recipe));
     titulo.innerText = formateLabel;
+    guardar.setAttribute("class", "fa-regular fa-heart")
+    guardar.innerText = " Guardar";
+    botonIngredientes.innerText = "  Ingredientes";
+    botonAlergias.innerText = "  Alergias";
     article.appendChild(link);
+    article.appendChild(botonIngredientes);
     article.appendChild(ul);
+    article.appendChild(botonAlergias);
+    article.appendChild(ul2);
+    article.appendChild(guardar);
     link.appendChild(titulo);
     link.appendChild(imagenComida);
     
@@ -100,6 +132,7 @@ async function mostrarComida(url){
     link.setAttribute("target","_blank");
     document.getElementById("platosRicos").appendChild(article);
   });
+  finalLoading();
  }
 
 
@@ -124,3 +157,19 @@ function filtrar(){
   mostrarComida(url)
   console.log(url.href);
 }
+
+function mostrarLoading(){
+  let imagenSection = document.createElement("section");
+  imagenSection.id = "cargarImagen";
+  let imagen = document.createElement("img");
+  imagen.src = "../image/giphy.gif";
+  imagenSection.appendChild(imagen);
+  document.getElementById("gif").appendChild(imagenSection);
+}
+
+function finalLoading(){
+  let imagen = document.getElementById("cargarImagen");
+  imagen.remove();
+}
+
+import { getRecipes,addRecipe,deleteRecipe } from "./menu.js"
