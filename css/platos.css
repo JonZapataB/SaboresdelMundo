@@ -3,17 +3,20 @@
   display:none;
 }
 body{
-  background:  linear-gradient(to right,rgba(94, 94, 94, 0.7),rgba(94,94,94,0.7)), url("https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2020/10/comida-platos-mesa-comida-2115297.jpg?tf=1080x");
+  background:  linear-gradient(to right,rgba(94, 94, 94, 0.7),rgba(94,94,94,0.7)), url("../image/fondo.png");
   background-size: 100%;
+  /* background: cover;
+  background: no-repeat; */
+  background-attachment:fixed;
+  font-family: 'Yusei Magic', sans-serif;
 }
 
 #platosRicos{
-  background-color:rgba(94, 94, 94, 0.9);
   margin-top: 150px;
 }
 h1 a{
   color:#d0ff95;
-  font-size: 130px;
+  font-size: 100px;
   text-decoration: none;
 }
 
@@ -21,6 +24,7 @@ h2{
   color:#4a3425;
   font-size: 80px;
   margin-left: 40px;
+  margin-bottom: 5px;
 }
 
 #nombrefiltros{
@@ -38,8 +42,6 @@ h2{
   display: flex;
   justify-content: center;
   padding-left: 0px;
-  
-  
 }
 
 #barraInicio li a{
@@ -50,7 +52,6 @@ h2{
   border-radius: 10px;
   font-size: 30px;
   padding-left: 50px;
-  
 }
 
 #corazon{
@@ -97,6 +98,14 @@ h3{
   font-size: 30px;
 }
 
+#imagen{
+  transition:0.5s;
+  margin-left: 60px;
+}
+#imagen:hover{
+  scale:150%;
+
+}
 article{
   margin-left: 10px;
 }
@@ -134,4 +143,16 @@ article a{
 #cargarImagen img{
   width: 500px;
   height: 500px;
+}
+
+ul li{
+  color:#fff;
+}
+
+#corazon{
+  color:red;
+  margin-left: 10px;
+  font-size: 30px;
+  margin-top: 5px;
+
 }

@@ -45,6 +45,7 @@ async function obtenerPostre(url1){
 
 async function mostrarPostre(url1){
 
+  mostrarLoading();
   let recipes = await obtenerPostre(url1);
   document.getElementById("postresRicos").innerHTML ="";
   recipes.forEach(recipe =>{
@@ -72,10 +73,12 @@ async function mostrarPostre(url1){
     let imagenComida= document.createElement("img");
     let link = document.createElement("a");
     let botonIngredientes = document.createElement("button");
+    botonIngredientes.setAttribute("class","fa-solid fa-angle-down");
     botonIngredientes.addEventListener("click", () => {
       ul.classList.toggle("hidden");
     });
     let botonAlergias = document.createElement("button");
+    botonAlergias.setAttribute("class","fa-solid fa-angle-down");
     botonAlergias.addEventListener("click", () => {
         ul2.classList.toggle("hidden");
     });
@@ -83,8 +86,9 @@ async function mostrarPostre(url1){
     imagenComida.src = recipe.imagen
     guardar.addEventListener("click",()=> addRecipe(recipe));
     titulo.innerText = formateLabel;
-    guardar.setAttribute("class", "fa-regular fa-heart");
-    guardar.innerText = " Guardar";
+    guardar.setAttribute("class", "fa-solid fa-heart");
+    guardar.setAttribute("id","corazon");
+    guardar.innerText = " ";
     botonIngredientes.innerText = "Ingredientes";
     botonAlergias.innerText = "Alergias";
     article.appendChild(link);
@@ -100,6 +104,7 @@ async function mostrarPostre(url1){
     
     document.getElementById("postresRicos").appendChild(article);
   });
+  finalLoading();
 }
 
 document.getElementById("botonFiltrarPostres").addEventListener("click", filtrarPostre) 
@@ -119,6 +124,20 @@ function filtrarPostre(){
   }
   mostrarPostre(url1)
   console.log(url1.href);
+}
+
+function mostrarLoading(){
+  let imagenSection = document.createElement("section");
+  imagenSection.id = "cargarImagen";
+  let imagen = document.createElement("img");
+  imagen.src = "../image/giphy.gif";
+  imagenSection.appendChild(imagen);
+  document.getElementById("gif").appendChild(imagenSection);
+}
+
+function finalLoading(){
+  let imagen = document.getElementById("cargarImagen");
+  imagen.remove();
 }
 
 import { getRecipes,addRecipe,deleteRecipe } from "./menu.js"

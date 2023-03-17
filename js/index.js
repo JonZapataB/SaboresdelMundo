@@ -112,11 +112,13 @@ async function mostrarComida(url){
         ul2.classList.toggle("hidden");
     });
     let guardar = document.createElement("p");
-    imagenComida.src = recipe.imagen
+    imagenComida.src = recipe.imagen;
+    imagenComida.setAttribute("id","imagen");
     guardar.addEventListener("click",()=> addRecipe(recipe));
     titulo.innerText = formateLabel;
-    guardar.setAttribute("class", "fa-regular fa-heart")
-    guardar.innerText = " Guardar";
+    guardar.setAttribute("class", "fa-solid fa-heart")
+    guardar.setAttribute("id","corazon");
+    guardar.innerText = " ";
     botonIngredientes.innerText = "  Ingredientes";
     botonAlergias.innerText = "  Alergias";
     article.appendChild(link);

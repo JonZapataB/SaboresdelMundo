@@ -1,9 +1,10 @@
 
 body{
     
-     background:  linear-gradient(to right,rgba(94, 94, 94, 0.7),rgba(94,94,94,0.7)), url("https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2020/10/comida-platos-mesa-comida-2115297.jpg?tf=1080x");
+     background:  linear-gradient(to right,rgba(94, 94, 94, 0.7),rgba(94,94,94,0.7)), url("../image/fondo.png");
      margin:15px;
      background-size: 100%;
+     font-family: 'Yusei Magic', sans-serif;
 
 }
 

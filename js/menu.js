@@ -15,15 +15,17 @@ export function getRecipes(){
 
  export function  addRecipe(recipe){
     let recipes = getRecipes();
+    console.log(recipe);
     if(inList(recipe,recipes) !== -1){
         return;
     }
     recipes.push(recipe);
     saveRecipes(recipes);
+    
 }
 
 function inList(recipe,recipes){
-    let index = recipes.findIndex(Element => Element.id ===recipe.id);
+    let index = recipes.findIndex(Element => Element.name ===recipe.name);
     return index;
 }
 
@@ -35,4 +37,8 @@ function inList(recipe,recipes){
     }
     recipes.splice(index,1);
     saveRecipes(recipes); 
+}
+
+export function clearMenu(){
+    localStorage.clear();
 }
