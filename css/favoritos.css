@@ -1,0 +1,42 @@
+
+body{
+    background:  linear-gradient(to right,rgba(94, 94, 94, 0.7),rgba(94,94,94,0.7)), url("../image/fondo.png");
+    background-size: 100%;
+    background-attachment:fixed;
+    font-family: 'Yusei Magic', sans-serif;
+}
+
+h1 a{
+    color:#d0ff95;
+    font-size: 100px;
+    text-decoration: none;
+}
+
+#barraInicio{
+    list-style: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #4a3425;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-left: 0px;
+}
+
+#barraInicio li a{
+    text-decoration: none;
+    color: #d0ff95;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 30px;
+    padding-left: 50px;
+}
+
+.fa-x{
+    border:none;
+    background: none;
+    color:red;
+    font-size: 30px;
+    margin-left: 5px;
+}
