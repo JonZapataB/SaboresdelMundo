@@ -49,3 +49,26 @@ p{
     color:#fff;
     margin-top: 30px;
 }
+
+@media (max-width:600px){
+    h1{
+        font-size: 85px;
+        color:#d0ff95
+    }
+    h2{
+        font-size: 40px;
+        color:#4a3425
+    }
+    h3{
+        font-size: 20px;
+        color:#fff
+    }
+    
+    p{
+        margin-right: 40px;
+        font-size: 20px;
+        color:#fff;
+        margin-top: 30px;
+    }
+
+}

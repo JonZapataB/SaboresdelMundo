@@ -13,18 +13,23 @@
     <title>Favoritos</title>
 </head>
 <body>
+    <h1 id="tituloclick"><a href="index.html" onclick="seleccionar()">Sabores del Mundo</a></h1>
     <section id="inicio">
-        <h1 id="tituloclick"><a href="index.html" onclick="seleccionar()">Sabores del Mundo</a></h1>
-        <ul id="barraInicio">
-            <li id="platos"><a href="platos.html" onclick="seleccionar()">Platos</a></li>
-            <li id="postres"><a href="postres.html" onclick="seleccionar()">Postres</a></li>
-            <li id="bebidas"><a href="bebidas.html" onclick="seleccionar()">Bebidas</a></li>
-            <li id="corazon"><a href="" onclick="seleccionar()"><i class="fa-solid fa-heart"></i></a></li>
-        </ul>
+        <nav id="nav">
+            <ul id="barraInicio">
+                <li id="platos"><a href="platos.html" onclick="seleccionar()">Platos</a></li>
+                <li id="postres"><a href="postres.html" onclick="seleccionar()">Postres</a></li>
+                <li id="bebidas"><a href="bebidas.html" onclick="seleccionar()">Bebidas</a></li>
+                <li id="corazon"><a href="favoritos.html" onclick="seleccionar()"><i class="fa-solid fa-heart"></i></a></li>
+            </ul>
+        </nav>
+        <div class="hamburguesa" onclick="menuhamburguesa()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
     </section>
     <h2>Favoritos</h2>
     <section id="favoritosRicos"></section>
     <script type="module" src="js/favoritos.js"></script>
-    
+    <script src="js/boton.js"></script>
 </body>
 </html>

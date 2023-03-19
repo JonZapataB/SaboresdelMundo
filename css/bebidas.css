@@ -59,7 +59,7 @@ h3{
     font-size: 30px;
 }
   
-  article{
+article{
     margin-left: 10px;
 }
 
@@ -96,4 +96,67 @@ ul li{
     margin-left: 10px;
     font-size: 30px;
     margin-top: 5px;
+}
+
+.hamburguesa{
+    background-color: #4a3425;
+    color: #d0ff95;
+    padding: 4px 6px;
+    border-radius: 10px; 
+    cursor: pointer;
+    display: none; 
+    text-align: center; 
+  }
+  
+  @media (max-width:900px){
+    #filtros{
+    
+        display:inline;
+        justify-content: center;
+        text-align: center;
+      }
+}
+@media (max-width:600px){
+    h1 a{
+      color:#d0ff95;
+      font-size: 50px;
+      text-decoration: none;
+    }
+    h2{
+        margin-left: 5px;
+        text-align: center;
+    }
+  
+    #imagen{
+      margin-left: 0;
+    }
+    article{margin-left:15px;
+    }
+    #filtros{
+    
+      display:inline;
+      justify-content: center;
+      text-align: center;
+    }
+    nav{
+      display: none;
+    }
+    .hamburguesa{
+      display:block;
+    }
+    nav.botonesbarra{
+      display: block;
+      position: absolute;
+      right: 5px;;
+      top: 75px;
+      background-color: #4a3425;
+      width: 180px;
+    }
+    nav.botonesbarra ul{
+        display: block !important;
+    }
+    nav.botonesbarra ul li{
+        border-bottom: 1px solid #fff;
+        padding: 10px 0;
+    }
 }
