@@ -101,6 +101,7 @@ h3{
 #imagen{
   transition:0.5s;
   margin-left: 60px;
+  border-radius: 15px;
 }
 #imagen:hover{
   scale:150%;
